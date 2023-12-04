@@ -1,3 +1,18 @@
+<?php 
+$sqlSelect = "SELECT prenom_participant FROM participant JOIN utilisateur ON participant.num_participant = utilisateur.num_participant WHERE id_user = :id_user";
+$stmtSelect = $pdo->prepare($sqlSelect);
+
+$id_user = $_SESSION["id_user"];
+
+$stmtSelect->bindParam(':id_user', $id_user);
+
+$stmtSelect->execute();
+
+$infoUser = $stmtSelect->fetch();
+
+//Récup l'id user
+$prenom = $infoUser['prenom_participant'];
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,19 +45,24 @@
         </div>
     </header>
     <div class="menu">
-	<div class="menubutton">
-		<div class="blok een"></div>
-		<div class="blok twee"></div>
-		<div class="blok drie"></div>
-	</div>
-	<ul class="">
-        <li class="accueil"><div class="menutekstwrapper"><a class="menutekst" href="" target="_blank" >Accueil</a></div></li>
-		<li class="activite"><div class="menutekstwrapper"><a class="menutekst" href="" target="_blank" >Activités</a></div></li>
-		<li class="creneau"><div class="menutekstwrapper"><a class="menutekst" href="" target="_blank" >Créneaux</a></div></li>
-		<li class="utilisateur"><div class="menutekstwrapper"><a class="menutekst" href="" target="_blank" >Responsables</a></div></li>
-		<li class="utilisateur"><div class="menutekstwrapper"><a class="menutekst" href="" target="_blank" >Participants</a></div></li>
-        <li class="utilisateur"><div class="menutekstwrapper"><a class="menutekst" href="" target="_blank" >Utilisateurs</a></div></li>
-	</ul>
-</div>
+        <div class="menubutton">
+            <div class="blok een"></div>
+            <div class="blok twee"></div>
+            <div class="blok drie"></div>
+        </div>
+        <ul class="">
+            <li class="accueil"><div class="menutekstwrapper"><a class="menutekst" href="admin/accueil.php">Accueil</a></div></li>
+            <li class="activite"><div class="menutekstwrapper"><a class="menutekst" href="view/admin/activite.php">Activités</a></div></li>
+            <li class="creneau"><div class="menutekstwrapper"><a class="menutekst" href="admin/creneau.php">Créneaux</a></div></li>
+            <li class="utilisateur"><div class="menutekstwrapper"><a class="menutekst" href="admin/responsable.php">Responsables</a></div></li>
+            <li class="utilisateur"><div class="menutekstwrapper"><a class="menutekst" href="admin/participant.php">Participants</a></div></li>
+            <li class="utilisateur"><div class="menutekstwrapper"><a class="menutekst" href="admin/utilisateur.php">Utilisateurs</a></div></li>
+        </ul>
+    </div>
+    <section class="">
+        <h1>Bienvenue <?php echo $prenom; ?></h1>
+    </section>
+    
+
 </body>
 </html>
