@@ -64,6 +64,20 @@ CREATE TABLE `responsable` (
   PRIMARY KEY (`num_resp`) -- Faites de `num_resp` la clé primaire
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+-- Structure de la table `utilisateur`
+--
+CREATE TABLE `utilisateur` (
+  `id_user` int(11) NOT NULL AUTO_INCREMENT,
+  `login` varchar(100) DEFAULT NULL,
+  `mdp` varchar(100) DEFAULT NULL,
+  `role` varchar(50) DEFAULT NULL,
+  `num_participant` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id_user`), -- Faites de `id_user` la clé primaire
+  KEY `num_participant` (`num_participant`),
+  CONSTRAINT `fk_utilisateur_participant` FOREIGN KEY (`num_participant`) REFERENCES `participant` (`num_participant`) ON DELETE SET NULL ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+
 -- Insertion de données dans la table `activite`
 INSERT INTO `activite` (`nom_act`, `description`, `num_resp`) VALUES
 ('Atelier de peinture', 'Atelier pour apprendre à peindre', 1),
@@ -103,3 +117,15 @@ INSERT INTO `responsable` (`nom_resp`, `prenom_resp`) VALUES
 ('Dupont', 'Jean'),
 ('Martin', 'Sophie'),
 ('Garcia', 'Carlos');
+
+-- Insertion d'un administrateur
+INSERT INTO `utilisateur` (`login`, `mdp`, `role`, `num_participant`)
+VALUES ('admin', 'admin', 'admin', NULL);
+
+-- Insertion d'un utilisateur
+INSERT INTO `utilisateur` (`login`, `mdp`, `role`, `num_participant`)
+VALUES ('user', 'user', 'utilisateur', 1); -- Remplacez 1 par l'ID du participant correspondant
+
+-- Insertion d'un responsable
+INSERT INTO `utilisateur` (`login`, `mdp`, `role`, `num_participant`)
+VALUES ('resp', 'resp', 'responsable', NULL);

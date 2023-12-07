@@ -21,6 +21,7 @@ $prenom = $infoUser['prenom_participant'];
     <title>Accueil</title>
     <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
     <link href="css/accueil.css" rel="stylesheet">
+    <link href="css/activite.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.2/angular.min.js"></script>
@@ -44,25 +45,56 @@ $prenom = $infoUser['prenom_participant'];
             </div>
         </div>
     </header>
-    <div class="menu">
-        <div class="menubutton">
-            <div class="blok een"></div>
-            <div class="blok twee"></div>
-            <div class="blok drie"></div>
+    <div class="content-wrapper">
+        <div class="menu">
+            <div class="menubutton">
+                <div class="blok een"></div>
+                <div class="blok twee"></div>
+                <div class="blok drie"></div>
+            </div>
+            <ul class="">
+                <li class="accueil"><div class="menutekstwrapper"><a class="menutekst" href="">Accueil</a></div></li>
+                <li class="activite"><div class="menutekstwrapper"><a class="menutekst" href="?page=activite">Activités</a></div></li>
+                <li class="creneau"><div class="menutekstwrapper"><a class="menutekst" href="">Créneaux</a></div></li>
+                <li class="utilisateur"><div class="menutekstwrapper"><a class="menutekst" href="">Responsables</a></div></li>
+                <li class="utilisateur"><div class="menutekstwrapper"><a class="menutekst" href="admin/participant.php">Participants</a></div></li>
+                <li class="utilisateur"><div class="menutekstwrapper"><a class="menutekst" href="admin/utilisateur.php">Utilisateurs</a></div></li>
+            </ul>
         </div>
-        <ul class="">
-            <li class="accueil"><div class="menutekstwrapper"><a class="menutekst" href="">Accueil</a></div></li>
-            <li class="activite"><div class="menutekstwrapper"><a class="menutekst" href="">Activités</a></div></li>
-            <li class="creneau"><div class="menutekstwrapper"><a class="menutekst" href="">Créneaux</a></div></li>
-            <li class="utilisateur"><div class="menutekstwrapper"><a class="menutekst" href="">Responsables</a></div></li>
-            <li class="utilisateur"><div class="menutekstwrapper"><a class="menutekst" href="">Participants</a></div></li>
-            <li class="utilisateur"><div class="menutekstwrapper"><a class="menutekst" href="">Utilisateurs</a></div></li>
-        </ul>
-    </div>
-    <section class="">
-        <h1>Bienvenue <?php echo $prenom; ?></h1>
-    </section>
-    
+        <section class="table-section">
+            <h1>Liste des activités</h1>
+            <div class="center-table-wrapper">
+                <table class="center-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nom</th>
+                            <th>Description</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        // Récupérer les données de la table activite
+                        $sqlSelectActivite = "SELECT * FROM activite";
+                        $stmtSelectActivite = $pdo->prepare($sqlSelectActivite);
+                        $stmtSelectActivite->execute();
+                        $activites = $stmtSelectActivite->fetchAll(PDO::FETCH_ASSOC);
 
+                        // Afficher les données dans le tableau
+                        foreach ($activites as $activite) {
+                            echo "<tr>";
+                            echo "<td>" . $activite['id_act'] . "</td>";
+                            echo "<td>" . $activite['nom_act'] . "</td>";
+                            echo "<td>" . $activite['description'] . "</td>";
+                            echo "<td>" . $activite['num_resp'] . "</td>";
+                            echo "</tr>";
+                        }
+                        ?>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
 </body>
 </html>

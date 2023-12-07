@@ -51,10 +51,10 @@ $prenom = $infoUser['prenom_participant'];
             <div class="blok drie"></div>
         </div>
         <ul class="">
-            <li class="accueil"><div class="menutekstwrapper"><a class="menutekst" href="admin/accueil.php">Accueil</a></div></li>
-            <li class="activite"><div class="menutekstwrapper"><a class="menutekst" href="view/admin/activite.php">Activités</a></div></li>
-            <li class="creneau"><div class="menutekstwrapper"><a class="menutekst" href="admin/creneau.php">Créneaux</a></div></li>
-            <li class="utilisateur"><div class="menutekstwrapper"><a class="menutekst" href="admin/responsable.php">Responsables</a></div></li>
+            <li class="accueil"><div class="menutekstwrapper"><a class="menutekst" href="index.php">Accueil</a></div></li>
+            <li class="activite"><div class="menutekstwrapper"><a class="menutekst" href="?page=activite">Activités</a></div></li>
+            <li class="creneau"><div class="menutekstwrapper"><a class="menutekst" href="">Créneaux</a></div></li>
+            <li class="utilisateur"><div class="menutekstwrapper"><a class="menutekst" href="">Responsables</a></div></li>
             <li class="utilisateur"><div class="menutekstwrapper"><a class="menutekst" href="admin/participant.php">Participants</a></div></li>
             <li class="utilisateur"><div class="menutekstwrapper"><a class="menutekst" href="admin/utilisateur.php">Utilisateurs</a></div></li>
         </ul>

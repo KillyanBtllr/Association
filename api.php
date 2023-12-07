@@ -292,6 +292,30 @@ if (isset($_SESSION["role"])) {
                         break;
                 }
             }
+            //variable "page" permet de gérer les include
+            if (isset($_GET["page"])) {
+                switch ($_GET["page"]) {
+                    case "activite": {
+                        include "view/admin/activite.php";
+                        break;
+                    }
+
+                    case "table": {
+                        include "view/admin/produit/table.php";
+                        break;
+                    }
+
+                    case "plat": {
+                        include "view/admin/produit/plat.php";
+                        break;
+                    }
+
+                    case "boisson": {
+                        include "view/admin/produit/boisson.php";
+                        break;
+                    }
+                }
+            }
             else {
                 include "view/admin.php";
             }
@@ -656,4 +680,8 @@ else {
         }
     }
 }
+
+
+
+?>
 
