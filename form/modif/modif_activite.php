@@ -18,18 +18,7 @@ include_once "../../connexion/connexion.php"
         <h2 class="login-header">Modifier une activité</h2>
         <form class="login-container" action="../../api.php" method="POST">
             <input type="hidden" name="action" value="modif_activite">
-            <p>Activité : 
-                <select name="id_activite">
-                    <?php
-                    $query = "SELECT id_act, nom_act FROM activite";
-                    $stmt = $pdo->query($query);
-
-                    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                        echo '<option value="' . $row['id_act'] . '">' . $row['nom_act'] . '</option>';
-                    }
-                    ?>
-                </select>
-            </p>
+            <p>Activité sélectionnée : <?php echo $_GET['id_act']; ?><input type="hidden" name="id_activite" value="<?php echo $_GET['id_act']; ?>"></p>
             <p><input type="text" name="nouveau_nom_act" placeholder="Nouveau nom de l'activité"></p>
             <p><input type="text" name="nouvelle_description_act" placeholder="Nouvelle description"></p>
             <p>Nouveau responsable :

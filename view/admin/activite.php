@@ -26,6 +26,14 @@ $prenom = $infoUser['prenom_participant'];
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.2/angular.min.js"></script>
     <script src="js/accueil.js"></script>
+    <script>
+        function submitForm(link) {
+            if (confirm('Êtes-vous sûr de vouloir supprimer ?')) {
+                link.closest('form').submit();
+            }
+            return false;
+        }
+    </script>
 </head>
 <body>
     <header>
@@ -69,8 +77,8 @@ $prenom = $infoUser['prenom_participant'];
                         <tr>
                             <th>ID</th>
                             <th>Nom</th>
-                            <th>Description</th>
-                            <th>Date</th>
+                            <th>Description</th>    
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -87,11 +95,23 @@ $prenom = $infoUser['prenom_participant'];
                             echo "<td>" . $activite['id_act'] . "</td>";
                             echo "<td>" . $activite['nom_act'] . "</td>";
                             echo "<td>" . $activite['description'] . "</td>";
-                            echo "<td>" . $activite['num_resp'] . "</td>";
+                            echo '<td class="bouton">
+                                <a href="form/modif/modif_activite.php?id_act=' . $activite['id_act'] . '"><img src="img/bouton_modif.svg" alt="Modifier"></a>                            
+                                <form method="post" action="">
+                                    <input type="hidden" name="action" value="suppr_activite">
+                                    <input type="hidden" name="id_act" value=" '. $activite["id_act"] . '">
+                                    <a href="#" type="submit" onclick="submitForm(this)"><img src="img/bouton_suppr.svg" alt="Supprimer"></a>
+                                </form>
+                                </td>';
                             echo "</tr>";
                         }
                         ?>
                     </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="4"><a href="form/ajout/ajout_activite.php"><img src="img/bouton_ajout.svg" alt="Ajouter"></a></td>
+                        </tr>
+                    </tfoot>
                 </table>
             </div>
         </section>

@@ -37,3 +37,29 @@
 .center-table tr:hover {
     background-color: #444444; /* Couleur de fond lors du survol */
 }
+
+.bouton{
+    display: flex;
+}
+.bouton img {
+    width: 20px;
+    height: 20px;
+}
+
+.center-table th {
+    text-align: center;
+}
+
+.center-table tfoot td {
+    text-align: center;
+}
+
+.center-table tfoot td img {
+    width: 30px;
+    height: 30px;
+}
+
+
+.center-table form {
+    margin: 20px;
+}
