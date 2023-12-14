@@ -38,7 +38,7 @@ $prenom = $infoUser['prenom_participant'];
 <body>
     <header>
         <div class="in-header">
-            <span class="headBase-texte"><a href="/5bear/lab/index.php" class="lien-head">Association</a></span>
+            <span class="headBase-texte"><a>Association</a></span>
         </div>
         <span class="head-base-menu"></span>
         <div class="membre__menu">
@@ -50,7 +50,7 @@ $prenom = $infoUser['prenom_participant'];
             <div class="membre__etage-menu">
                 <a href="" class="membre__link"><i class="material-icons membre__link-icons">account_circle</i> Mon Compte</a>
                 <a href="deconnexion.php" class="membre__link"><i class="material-icons membre__link-icons">exit_to_app</i> Déconnexion</a>
-            </div>
+            </div>  
         </div>
     </header>
     <div class="content-wrapper">
@@ -61,7 +61,7 @@ $prenom = $infoUser['prenom_participant'];
                 <div class="blok drie"></div>
             </div>
             <ul class="">
-                <li class="accueil"><div class="menutekstwrapper"><a class="menutekst" href="">Accueil</a></div></li>
+                <li class="accueil"><div class="menutekstwrapper"><a class="menutekst" href="index.php">Accueil</a></div></li>
                 <li class="activite"><div class="menutekstwrapper"><a class="menutekst" href="?page=activite">Activités</a></div></li>
                 <li class="creneau"><div class="menutekstwrapper"><a class="menutekst" href="">Créneaux</a></div></li>
                 <li class="utilisateur"><div class="menutekstwrapper"><a class="menutekst" href="">Responsables</a></div></li>
@@ -92,7 +92,7 @@ $prenom = $infoUser['prenom_participant'];
                         // Afficher les données dans le tableau
                         foreach ($activites as $activite) {
                             echo "<tr>";
-                            echo "<td>" . $activite['id_act'] . "</td>";
+                            echo "<td style='text-align: center;' >" . $activite['id_act'] . "</td>";
                             echo "<td>" . $activite['nom_act'] . "</td>";
                             echo "<td>" . $activite['description'] . "</td>";
                             echo '<td class="bouton">

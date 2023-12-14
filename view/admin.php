@@ -25,11 +25,19 @@ $prenom = $infoUser['prenom_participant'];
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.2/angular.min.js"></script>
     <script src="js/accueil.js"></script>
+    <script>
+        function submitForm(link) {
+            if (confirm('Êtes-vous sûr de vouloir supprimer ?')) {
+                link.closest('form').submit();
+            }
+            return false;
+        }
+    </script>
 </head>
 <body>
     <header>
         <div class="in-header">
-            <span class="headBase-texte"><a href="/5bear/lab/index.php" class="lien-head">Association</a></span>
+            <span class="headBase-texte"><a>Association</a></span>
         </div>
         <span class="head-base-menu"></span>
         <div class="membre__menu">
@@ -44,25 +52,25 @@ $prenom = $infoUser['prenom_participant'];
             </div>
         </div>
     </header>
-    <div class="menu">
-        <div class="menubutton">
-            <div class="blok een"></div>
-            <div class="blok twee"></div>
-            <div class="blok drie"></div>
+    <div class="content-wrapper">
+        <div class="menu">
+            <div class="menubutton">
+                <div class="blok een"></div>
+                <div class="blok twee"></div>
+                <div class="blok drie"></div>
+            </div>
+            <ul class="">
+                <li class="accueil"><div class="menutekstwrapper"><a class="menutekst" href="index.php">Accueil</a></div></li>
+                <li class="activite"><div class="menutekstwrapper"><a class="menutekst" href="?page=activite">Activités</a></div></li>
+                <li class="creneau"><div class="menutekstwrapper"><a class="menutekst" href="">Créneaux</a></div></li>
+                <li class="utilisateur"><div class="menutekstwrapper"><a class="menutekst" href="">Responsables</a></div></li>
+                <li class="utilisateur"><div class="menutekstwrapper"><a class="menutekst" href="admin/participant.php">Participants</a></div></li>
+                <li class="utilisateur"><div class="menutekstwrapper"><a class="menutekst" href="admin/utilisateur.php">Utilisateurs</a></div></li>
+            </ul>
         </div>
-        <ul class="">
-            <li class="accueil"><div class="menutekstwrapper"><a class="menutekst" href="index.php">Accueil</a></div></li>
-            <li class="activite"><div class="menutekstwrapper"><a class="menutekst" href="?page=activite">Activités</a></div></li>
-            <li class="creneau"><div class="menutekstwrapper"><a class="menutekst" href="">Créneaux</a></div></li>
-            <li class="utilisateur"><div class="menutekstwrapper"><a class="menutekst" href="">Responsables</a></div></li>
-            <li class="utilisateur"><div class="menutekstwrapper"><a class="menutekst" href="admin/participant.php">Participants</a></div></li>
-            <li class="utilisateur"><div class="menutekstwrapper"><a class="menutekst" href="admin/utilisateur.php">Utilisateurs</a></div></li>
-        </ul>
+        <section class="bienvenue">
+            <h1>Bienvenue <?php echo $prenom; ?></h1>
+        </section>
     </div>
-    <section class="">
-        <h1>Bienvenue <?php echo $prenom; ?></h1>
-    </section>
-    
-
 </body>
 </html>
