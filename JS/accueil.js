@@ -39,8 +39,10 @@ $(document).ready(function () {
 
     // Activation du menu lors du clic sur n'importe quel élément du menu
     listItem.click(function (event) {
-        if ($(event.target).is('a') && !$(event.target).hasClass('menutekst')) {
+        var clickedElement = $(event.target);
+        if (clickedElement.is('a') && !clickedElement.hasClass('menutekst')) {
             // Si le clic est sur un lien et n'est pas la classe 'menutekst', alors redirige
+            window.location.href = clickedElement.attr('href');
             return;
         }
         toggleAll();

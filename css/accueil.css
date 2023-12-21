@@ -1,5 +1,8 @@
 body {
-  background: #e0e5ec;
+  font-family: 'Roboto', sans-serif;
+  background: #333;
+  font-size: 40;
+  height: 100vh;
 }
 
 h1 {
@@ -142,17 +145,6 @@ a {
   width: 100%;
 }
 
-/* Body */
-
-body {
-  margin: 0px;
-  /* On retire le margin par défaut du body */
-  background: #ddd;
-
-  font-family: sans-serif;
-  /* Par défaut sans-serif sur le site */
-}
-
 /* Header */
 
 header {
@@ -168,12 +160,9 @@ header {
 
 .in-header {
   position: relative;
-  text-align: center;
-
   width: 1248px;
-  margin: auto;
+  margin-left: 7%;
   padding: 10px;
-
   font-size: 28px;
   font-weight: bold;
   color: #fff;
@@ -199,7 +188,7 @@ header {
 }
 
 .headBase-texte {
-  height: 25px;
+  height: 20px;
   width: 200px;
 }
 
@@ -215,7 +204,7 @@ header {
   background: #222;
 }
 
-.icone{
+.icone {
   width: 25px;
   height: 25px;
   margin: 10px;
@@ -318,11 +307,6 @@ div.membre__menu:hover div.membre__etage-menu {
   margin: 0;
 }
 
-body {
-  font-family: 'Roboto', sans-serif;
-  background: #333;
-  font-size: 40;
-}
 
 h1 {
   text-transform: uppercase;
@@ -360,7 +344,7 @@ h2 {
   color: white;
 }
 
-.toggled{
+.toggled {
   padding: 30px 20px 20px 10px;
 }
 
@@ -417,6 +401,13 @@ h2 {
 .menu ul li.newsletter {
   background-image: url('https://files.samvdhwebdev.nl/codepen/email.png');
 }
+
+.menu ul li img {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+}
+
 
 .menu ul li.listActive {
   opacity: 1;
@@ -497,3 +488,10 @@ h2 {
 }
 
 /* Main */
+
+.bienvenue{
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+}

@@ -50,7 +50,7 @@ $prenom = $infoUser['prenom_participant'];
             <div class="membre__etage-menu">
                 <a href="" class="membre__link"><i class="material-icons membre__link-icons">account_circle</i> Mon Compte</a>
                 <a href="deconnexion.php" class="membre__link"><i class="material-icons membre__link-icons">exit_to_app</i> Déconnexion</a>
-            </div>  
+            </div>
         </div>
     </header>
     <div class="content-wrapper">
@@ -63,10 +63,10 @@ $prenom = $infoUser['prenom_participant'];
             <ul class="">
                 <li class="accueil"><div class="menutekstwrapper"><a class="menutekst" href="index.php">Accueil</a></div></li>
                 <li class="activite"><div class="menutekstwrapper"><a class="menutekst" href="?page=activite">Activités</a></div></li>
-                <li class="creneau"><div class="menutekstwrapper"><a class="menutekst" href="">Créneaux</a></div></li>
-                <li class="utilisateur"><div class="menutekstwrapper"><a class="menutekst" href="">Responsables</a></div></li>
-                <li class="utilisateur"><div class="menutekstwrapper"><a class="menutekst" href="admin/participant.php">Participants</a></div></li>
-                <li class="utilisateur"><div class="menutekstwrapper"><a class="menutekst" href="admin/utilisateur.php">Utilisateurs</a></div></li>
+                <li class="creneau"><div class="menutekstwrapper"><a class="menutekst" href="?page=creneau">Créneaux</a></div></li>
+                <li class="utilisateur"><div class="menutekstwrapper"><a class="menutekst" href="?page=responsable">Responsables</a></div></li>
+                <li class="utilisateur"><div class="menutekstwrapper"><a class="menutekst" href="?page=participant">Participants</a></div></li>
+                <li class="utilisateur"><div class="menutekstwrapper"><a class="menutekst" href="?page=user">Utilisateurs</a></div></li>
             </ul>
         </div>
         <section class="table-section">

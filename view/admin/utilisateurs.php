@@ -21,6 +21,7 @@ $prenom = $infoUser['prenom_participant'];
     <title>Accueil</title>
     <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
     <link href="css/accueil.css" rel="stylesheet">
+    <link href="css/activite.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.2/angular.min.js"></script>
@@ -68,8 +69,51 @@ $prenom = $infoUser['prenom_participant'];
                 <li class="utilisateur"><div class="menutekstwrapper"><a class="menutekst" href="?page=user">Utilisateurs</a></div></li>
             </ul>
         </div>
-        <section class="bienvenue">
-            <h1>Bienvenue <?php echo $prenom; ?></h1>
+        <section class="table-section">
+            <h1>Liste des utilisateurs</h1>
+            <div class="center-table-wrapper">
+                <table class="center-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nom</th>
+                            <th>Description</th>    
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        // Récupérer les données de la table activite
+                        $sqlSelectActivite = "SELECT * FROM activite";
+                        $stmtSelectActivite = $pdo->prepare($sqlSelectActivite);
+                        $stmtSelectActivite->execute();
+                        $activites = $stmtSelectActivite->fetchAll(PDO::FETCH_ASSOC);
+
+                        // Afficher les données dans le tableau
+                        foreach ($activites as $activite) {
+                            echo "<tr>";
+                            echo "<td style='text-align: center;' >" . $activite['id_act'] . "</td>";
+                            echo "<td>" . $activite['nom_act'] . "</td>";
+                            echo "<td>" . $activite['description'] . "</td>";
+                            echo '<td class="bouton">
+                                <a href="form/modif/modif_activite.php?id_act=' . $activite['id_act'] . '"><img src="img/bouton_modif.svg" alt="Modifier"></a>                            
+                                <form method="post" action="">
+                                    <input type="hidden" name="action" value="suppr_activite">
+                                    <input type="hidden" name="id_act" value=" '. $activite["id_act"] . '">
+                                    <a href="#" type="submit" onclick="submitForm(this)"><img src="img/bouton_suppr.svg" alt="Supprimer"></a>
+                                </form>
+                                </td>';
+                            echo "</tr>";
+                        }
+                        ?>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="4"><a href="form/ajout/ajout_activite.php"><img src="img/bouton_ajout.svg" alt="Ajouter"></a></td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
         </section>
     </div>
 </body>

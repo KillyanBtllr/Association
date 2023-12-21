@@ -300,18 +300,23 @@ if (isset($_SESSION["role"])) {
                         break;
                     }
 
-                    case "table": {
-                        include "view/admin/produit/table.php";
+                    case "creneau": {
+                        include "view/admin/creneau.php";
                         break;
                     }
 
-                    case "plat": {
-                        include "view/admin/produit/plat.php";
+                    case "responsable": {
+                        include "view/admin/responsable.php";
                         break;
                     }
 
-                    case "boisson": {
-                        include "view/admin/produit/boisson.php";
+                    case "participant": {
+                        include "view/admin/participant.php";
+                        break;
+                    }
+
+                    case "user": {
+                        include "view/admin/utilisateurs.php";
                         break;
                     }
                 }
