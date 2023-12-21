@@ -43,7 +43,7 @@ if (isset($_SESSION["role"])) {
                 
                             $stmtInsert->execute();
                 
-                            header("Location: index.php");
+                            header("Location: index.php?page=responsable");
                         }
                 
                         catch (PDOException $e) {
@@ -65,7 +65,7 @@ if (isset($_SESSION["role"])) {
                 
                             $stmtInsert->execute();
                 
-                            header("Location: index.php");
+                            header("Location: index.php?page=creneau");
                         }
                 
                         catch (PDOException $e) {
@@ -89,7 +89,7 @@ if (isset($_SESSION["role"])) {
                 
                             $stmtInsert->execute();
                 
-                            header("Location: index.php");
+                            header("Location: index.php?page=activite");
                         }
                 
                         catch (PDOException $e) {
@@ -150,13 +150,36 @@ if (isset($_SESSION["role"])) {
                 
                             $stmtInsert->execute();
                 
-                            header("Location: index.php");
+                            header("Location: index.php?page=activite");
                         }
                 
                         catch (PDOException $e) {
                             echo "Erreur lors de la requête SQL : " . $e->getMessage();
                         }
                         break;
+
+                    case "modif_creneau":
+            
+                        try {
+                            $sqlInsert = "UPDATE creneau SET heure_debut = :nouvelle_heure_debut, heure_fin = :nouvelle_heure_fin WHERE id_creneau = :id_creneau";
+                            $stmtInsert = $pdo->prepare($sqlInsert);
+                            
+                            $id_creneau = $_POST["id_creneau"];
+                            $nouvelle_heure_debut = $_POST["nouvelle_heure_debut"];
+                            $nouvelle_heure_fin = $_POST["nouvelle_heure_fin"];
+                
+                            $stmtInsert->bindParam(':id_creneau', $id_creneau);
+                            $stmtInsert->bindParam(':nouvelle_heure_debut', $nouvelle_heure_debut);
+                            $stmtInsert->bindParam(':nouvelle_heure_fin', $nouvelle_heure_fin);
+                
+                            $stmtInsert->execute();
+                
+                            header("Location: index.php?page=creneau");
+                        }
+                
+                        catch (PDOException $e) {
+                            echo "Erreur lors de la requête SQL : " . $e->getMessage();
+                        }
             
                     case "modif_resp":
             
@@ -164,15 +187,17 @@ if (isset($_SESSION["role"])) {
                             $sqlInsert = "UPDATE responsable SET nom_resp = :nouveau_nom_resp, prenom_resp = :nouveau_prenom_resp WHERE num_resp = :num_resp";
                             $stmtInsert = $pdo->prepare($sqlInsert);
                             
+                            $num_resp = $_POST["num_resp"];
                             $nouveau_nom_resp = $_POST["nom_resp"];
                             $nouveau_prenom_resp = $_POST["prenom_resp"];
                 
+                            $stmtInsert->bindParam(':num_resp', $num_resp);
                             $stmtInsert->bindParam(':nouveau_nom_resp', $nouveau_nom_resp);
                             $stmtInsert->bindParam(':nouveau_prenom_resp', $nouveau_prenom_resp);
                 
                             $stmtInsert->execute();
                 
-                            header("Location: index.php");
+                            header("Location: index.php?page=responsable");
                         }
                 
                         catch (PDOException $e) {
@@ -218,7 +243,7 @@ if (isset($_SESSION["role"])) {
                             
                             $stmtDelete->execute();
                 
-                            header("Location: index.php");
+                            header("Location: index.php?page=activite");
                         }
                 
                         catch (PDOException $e) {
@@ -238,7 +263,7 @@ if (isset($_SESSION["role"])) {
                             
                             $stmtDelete->execute();
                 
-                            header("Location: index.php");
+                            header("Location: index.php?page=creneau");
                         }
                 
                         catch (PDOException $e) {
@@ -258,7 +283,7 @@ if (isset($_SESSION["role"])) {
                             
                             $stmtDelete->execute();
                 
-                            header("Location: index.php");
+                            header("Location: index.php?page=responsable");
                         }
                 
                         catch (PDOException $e) {
@@ -365,7 +390,7 @@ if (isset($_SESSION["role"])) {
                 
                             $stmtInsert->execute();
                 
-                            header("Location: index.php");
+                            header("Location: index.php?page=responsable");
                         }
                 
                         catch (PDOException $e) {
@@ -387,7 +412,7 @@ if (isset($_SESSION["role"])) {
                 
                             $stmtInsert->execute();
                 
-                            header("Location: index.php");
+                            header("Location: index.php?page=creneau");
                         }
                 
                         catch (PDOException $e) {
@@ -411,7 +436,7 @@ if (isset($_SESSION["role"])) {
                 
                             $stmtInsert->execute();
                 
-                            header("Location: index.php");
+                            header("Location: index.php?page=activite");
                         }
                 
                         catch (PDOException $e) {
@@ -486,6 +511,7 @@ if (isset($_SESSION["role"])) {
                             $sqlInsert = "UPDATE responsable SET nom_resp = :nouveau_nom_resp, prenom_resp = :nouveau_prenom_resp WHERE num_resp = :num_resp";
                             $stmtInsert = $pdo->prepare($sqlInsert);
                             
+                            $
                             $nouveau_nom_resp = $_POST["nom_resp"];
                             $nouveau_prenom_resp = $_POST["prenom_resp"];
                 
@@ -494,7 +520,7 @@ if (isset($_SESSION["role"])) {
                 
                             $stmtInsert->execute();
                 
-                            header("Location: index.php");
+                            header("Location: index.php?page=responsable");
                         }
                 
                         catch (PDOException $e) {
@@ -580,7 +606,7 @@ if (isset($_SESSION["role"])) {
                             
                             $stmtDelete->execute();
                 
-                            header("Location: index.php");
+                            header("Location: index.php?page=responsable");
                         }
                 
                         catch (PDOException $e) {

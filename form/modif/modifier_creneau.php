@@ -17,7 +17,7 @@ include_once "../../connexion/connexion.php"
         <div class="login-triangle"></div>
         <h2 class="login-header">Modifier un créneau</h2>
         <form class="login-container" action="../../api.php" method="POST">
-            <input type="hidden" name="action" value="ajout_resp">
+            <input type="hidden" name="action" value="modif_creneau">
             <p class="bold">Sélectionner un créneau à modifier :<p>
             <select name="id_creneau">
                     <?php
@@ -31,8 +31,8 @@ include_once "../../connexion/connexion.php"
                 </select>
             </p>
             <p class="bold">Chosir un nouveau créneau : 
-                <p>Heure de début :<input type="datetime-local" name="hdebut"></p>
-                <p>Heure de fin :<input type="datetime-local" name="hfin"></p>
+                <p>Heure de début :<input type="datetime-local" name="nouvelle_heure_debut"></p>
+                <p>Heure de fin :<input type="datetime-local" name="nouvelle_heure_fin"></p>
             </p>
             <p><input type="submit" value="Envoyer"></p>
         </form>

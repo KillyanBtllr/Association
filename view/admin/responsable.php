@@ -77,29 +77,29 @@ $prenom = $infoUser['prenom_participant'];
                         <tr>
                             <th>ID</th>
                             <th>Nom</th>
-                            <th>Description</th>    
+                            <th>Prénom</th>    
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
                         // Récupérer les données de la table activite
-                        $sqlSelectActivite = "SELECT * FROM activite";
-                        $stmtSelectActivite = $pdo->prepare($sqlSelectActivite);
-                        $stmtSelectActivite->execute();
-                        $activites = $stmtSelectActivite->fetchAll(PDO::FETCH_ASSOC);
+                        $sqlSelectResponsable = "SELECT * FROM responsable";
+                        $stmtSelectResponsable = $pdo->prepare($sqlSelectResponsable);
+                        $stmtSelectResponsable->execute();
+                        $responsables = $stmtSelectResponsable->fetchAll(PDO::FETCH_ASSOC);
 
                         // Afficher les données dans le tableau
-                        foreach ($activites as $activite) {
+                        foreach ($responsables as $responsable) {
                             echo "<tr>";
-                            echo "<td style='text-align: center;' >" . $activite['id_act'] . "</td>";
-                            echo "<td>" . $activite['nom_act'] . "</td>";
-                            echo "<td>" . $activite['description'] . "</td>";
+                            echo "<td style='text-align: center;' >" . $responsable['num_resp'] . "</td>";
+                            echo "<td>" . $responsable['nom_resp'] . "</td>";
+                            echo "<td>" . $responsable['prenom_resp'] . "</td>";
                             echo '<td class="bouton">
-                                <a href="form/modif/modif_activite.php?id_act=' . $activite['id_act'] . '"><img src="img/bouton_modif.svg" alt="Modifier"></a>                            
+                                <a href="form/modif/modif_resp.php?num_resp=' . $responsable['num_resp'] . '"><img src="img/bouton_modif.svg" alt="Modifier"></a>                            
                                 <form method="post" action="">
-                                    <input type="hidden" name="action" value="suppr_activite">
-                                    <input type="hidden" name="id_act" value=" '. $activite["id_act"] . '">
+                                    <input type="hidden" name="action" value="suppr_resp">
+                                    <input type="hidden" name="num_resp" value=" '. $responsable["num_resp"] . '">
                                     <a href="#" type="submit" onclick="submitForm(this)"><img src="img/bouton_suppr.svg" alt="Supprimer"></a>
                                 </form>
                                 </td>';
@@ -109,7 +109,7 @@ $prenom = $infoUser['prenom_participant'];
                     </tbody>
                     <tfoot>
                         <tr>
-                            <td colspan="4"><a href="form/ajout/ajout_activite.php"><img src="img/bouton_ajout.svg" alt="Ajouter"></a></td>
+                            <td colspan="4"><a href="form/ajout/ajout_resp.php"><img src="img/bouton_ajout.svg" alt="Ajouter"></a></td>
                         </tr>
                     </tfoot>
                 </table>

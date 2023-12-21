@@ -18,20 +18,9 @@ include_once "../../connexion/connexion.php"
         <h2 class="login-header">Ajouter Responsable</h2>
         <form class="login-container" action="../../api.php" method="POST">
             <input type="hidden" name="action" value="modif_resp">
-            <p>Sélectionner un responsable à modifier : 
-                <select name="num_resp">
-                    <?php
-                    $query = "SELECT num_resp, nom_resp, prenom_resp FROM responsable";
-                    $stmt = $pdo->query($query);
-
-                    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                        echo '<option value="' . $row['num_resp'] . '">' . $row['nom_resp'] . ' ' . $row['prenom_resp'] . '</option>';
-                    }
-                    ?>
-                </select>
-            </p>
-            <p><input type="text" name="nom" placeholder="Nouveau nom"></p>
-            <p><input type="text" name="prenom" placeholder="Nouveau prénom"></p>
+            <p>Responsable sélectionnée : <?php echo $_GET['num_resp']; ?><input type="hidden" name="num_resp" value="<?php echo $_GET['num_resp']; ?>"></p>
+            <p><input type="text" name="nom_resp" placeholder="Nouveau nom"></p>
+            <p><input type="text" name="prenom_resp" placeholder="Nouveau prénom"></p>
             <p><input type="submit" value="Envoyer"></p>
         </form>
     </div>
