@@ -18,25 +18,14 @@ include_once "../../connexion/connexion.php"
         <h2 class="login-header">Modifier un utilisateur</h2>
         <form class="login-container" action="../../api.php" method="POST">
             <input type="hidden" name="action" value="modif_utilisateur">
-            <p>Utilisateur : 
-                <select name="id_user">
-                    <?php
-                    $query = "SELECT id_user, login FROM utilisateur";
-                    $stmt = $pdo->query($query);
-
-                    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                        echo '<option value="' . $row['id_user'] . '">' . $row['login'] . '</option>';
-                    }
-                    ?>
-                </select>
-            </p>
+            <p>Utilisateur sélectionné : <?php echo $_GET['id_user']; ?><input type="hidden" name="id_user" value="<?php echo $_GET['id_user']; ?>"></p>
             <p><input type="text" name="nouveau_login" placeholder="Nouveau login"></p>
             <p><input type="text" name="nouveau_mdp" placeholder="Nouveau mot de passe"></p>
             <p>Nouveau role :
                 <select name="nouveau_role">
                     <option value="participant">participant</option>
-                    <option value="participant">responsable</option>
-                    <option value="participant">admin</option>
+                    <option value="responsable">responsable</option>
+                    <option value="admin">admin</option>
                 </select>
             </p>
             <p><input type="submit" value="Envoyer"></p>

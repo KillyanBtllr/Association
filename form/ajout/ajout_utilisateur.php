@@ -1,7 +1,3 @@
-<?php
-include_once "../../connexion/connexion.php"
-?>
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -15,15 +11,15 @@ include_once "../../connexion/connexion.php"
 <body>
     <div class="login">
         <div class="login-triangle"></div>
-        <h2 class="login-header">Modifier un participant</h2>
+        <h2 class="login-header">Ajouter Utilisateur</h2>
         <form class="login-container" action="../../api.php" method="POST">
-            <input type="hidden" name="action" value="modif_participant">
-            <p>Participant sélectionnée : <?php echo $_GET['num_participant']; ?><input type="hidden" name="num_participant" value="<?php echo $_GET['num_participant']; ?>"></p>
-            <p><input type="text" name="nom_participant" placeholder="Nouveau nom"></p>
-            <p><input type="text" name="prenom_participant" placeholder="Nouveau prénom"></p>
-            <p><input type="text" name="mail_participant" placeholder="Nouveau mail"></p>
+            <input type="hidden" name="action" value="ajout_utilisateur">
+            <p><input type="text" name="login" placeholder="Nom"></p>
+            <p><input type="text" name="mdp" placeholder="Prenom"></p>
+            <p><input type="text" name="role" placeholder="Role"></p>
+            <p><input type="text" name="num_participant" placeholder="Participant"></p>
             <p><input type="submit" value="Envoyer"></p>
-            </form>
+        </form>
     </div>
 </body>
 </html>

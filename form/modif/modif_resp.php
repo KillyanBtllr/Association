@@ -15,7 +15,7 @@ include_once "../../connexion/connexion.php"
 <body>
     <div class="login">
         <div class="login-triangle"></div>
-        <h2 class="login-header">Ajouter Responsable</h2>
+        <h2 class="login-header">Modifier Responsable</h2>
         <form class="login-container" action="../../api.php" method="POST">
             <input type="hidden" name="action" value="modif_resp">
             <p>Responsable sélectionnée : <?php echo $_GET['num_resp']; ?><input type="hidden" name="num_resp" value="<?php echo $_GET['num_resp']; ?>"></p>

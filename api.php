@@ -50,6 +50,31 @@ if (isset($_SESSION["role"])) {
                             echo "Erreur lors de la requête SQL : " . $e->getMessage();
                         }
                         break;
+
+                    case "ajout_participant":
+        
+                        try {
+                            $sqlInsert = "INSERT INTO participant (nom_participant, prenom_participant, mail_participant) VALUES (:nom, :prenom, :mail)";
+                            $stmtInsert = $pdo->prepare($sqlInsert);
+                
+                            $nom = $_POST["nom"];
+                            $prenom = $_POST["prenom"];
+                            $mail = $_POST["mail"];
+                
+                            $stmtInsert->bindParam(':nom', $nom);
+                            $stmtInsert->bindParam(':prenom', $prenom);
+                            $stmtInsert->bindParam(':mail', $mail);
+                
+                            $stmtInsert->execute();
+                
+                            header("Location: index.php?page=participant");
+                        }
+                
+                        catch (PDOException $e) {
+                            echo "Erreur lors de la requête SQL : " . $e->getMessage();
+                        }
+                        break;
+    
             
                     case "ajout_creneau":
                 
@@ -90,6 +115,33 @@ if (isset($_SESSION["role"])) {
                             $stmtInsert->execute();
                 
                             header("Location: index.php?page=activite");
+                        }
+                
+                        catch (PDOException $e) {
+                            echo "Erreur lors de la requête SQL : " . $e->getMessage();
+                        }
+                        break;
+
+
+                    case "ajout_utilisateur":
+            
+                        try {
+                            $sqlInsert = "INSERT INTO utilisateur (login, mdp, role, num_participant) VALUES (:login, :mdp, :role, :num_participant)";
+                            $stmtInsert = $pdo->prepare($sqlInsert);
+                
+                            $login = $_POST["login"];
+                            $mdp = $_POST["mdp"];
+                            $role = $_POST["role"];
+                            $num_participant = $_POST["num_participant"];
+                
+                            $stmtInsert->bindParam(':login', $login);
+                            $stmtInsert->bindParam(':mdp', $mdp);
+                            $stmtInsert->bindParam(':role', $role);
+                            $stmtInsert->bindParam(':num_participant', $num_participant);
+                
+                            $stmtInsert->execute();
+                
+                            header("Location: index.php?page=user");
                         }
                 
                         catch (PDOException $e) {
@@ -204,6 +256,32 @@ if (isset($_SESSION["role"])) {
                             echo "Erreur lors de la requête SQL : " . $e->getMessage();
                         }
                         break;
+
+                    case "modif_participant":
+        
+                        try {
+                            $sqlInsert = "UPDATE participant SET nom_participant = :nouveau_nom_participant, prenom_participant = :nouveau_prenom_participant, mail_participant = :nouveau_mail_participant WHERE num_participant = :num_participant";
+                            $stmtInsert = $pdo->prepare($sqlInsert);
+                            
+                            $num_participant = $_POST["num_participant"];
+                            $nouveau_nom_participant = $_POST["nom_participant"];
+                            $nouveau_prenom_participant = $_POST["prenom_participant"];
+                            $nouveau_mail_participant = $_POST["mail_participant"];
+                
+                            $stmtInsert->bindParam(':num_participant', $num_participant);
+                            $stmtInsert->bindParam(':nouveau_nom_participant', $nouveau_nom_participant);
+                            $stmtInsert->bindParam(':nouveau_prenom_participant', $nouveau_prenom_participant);
+                            $stmtInsert->bindParam(':nouveau_mail_participant', $nouveau_mail_participant);
+                
+                            $stmtInsert->execute();
+                
+                            header("Location: index.php?page=participant");
+                        }
+                
+                        catch (PDOException $e) {
+                            echo "Erreur lors de la requête SQL : " . $e->getMessage();
+                        }
+                        break;
                 
                     case "modif_utilisateur":
         
@@ -223,7 +301,7 @@ if (isset($_SESSION["role"])) {
                 
                             $stmtInsert->execute();
                 
-                            header("Location: index.php");
+                            header("Location: index.php?page=user");
                         }
                     
                         catch (PDOException $e) {
@@ -303,7 +381,7 @@ if (isset($_SESSION["role"])) {
                             
                             $stmtDelete->execute();
                 
-                            header("Location: index.php");
+                            header("Location: index.php?page=user");
                         }
                 
                         catch (PDOException $e) {
@@ -398,6 +476,30 @@ if (isset($_SESSION["role"])) {
                         }
                         break;
             
+                    case "ajout_participant":
+            
+                        try {
+                            $sqlInsert = "INSERT INTO participant (nom_participant, prenom_participant, mail_participant) VALUES (:nom, :prenom, :mail)";
+                            $stmtInsert = $pdo->prepare($sqlInsert);
+                
+                            $nom = $_POST["nom"];
+                            $prenom = $_POST["prenom"];
+                            $mail = $_POST["mail"];
+                
+                            $stmtInsert->bindParam(':nom', $nom);
+                            $stmtInsert->bindParam(':prenom', $prenom);
+                            $stmtInsert->bindParam(':mail', $mail);
+                
+                            $stmtInsert->execute();
+                
+                            header("Location: index.php?page=participant");
+                        }
+                
+                        catch (PDOException $e) {
+                            echo "Erreur lors de la requête SQL : " . $e->getMessage();
+                        }
+                        break;
+
                     case "ajout_creneau":
                 
                         try {
@@ -546,7 +648,7 @@ if (isset($_SESSION["role"])) {
                 
                             $stmtInsert->execute();
                 
-                            header("Location: index.php");
+                            header("Location: index.php?page=user");
                         }
                     
                         catch (PDOException $e) {

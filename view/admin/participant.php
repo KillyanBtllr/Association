@@ -77,29 +77,31 @@ $prenom = $infoUser['prenom_participant'];
                         <tr>
                             <th>ID</th>
                             <th>Nom</th>
-                            <th>Description</th>    
+                            <th>Prenom</th>    
+                            <th>Mail</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
                         // Récupérer les données de la table activite
-                        $sqlSelectActivite = "SELECT * FROM activite";
-                        $stmtSelectActivite = $pdo->prepare($sqlSelectActivite);
-                        $stmtSelectActivite->execute();
-                        $activites = $stmtSelectActivite->fetchAll(PDO::FETCH_ASSOC);
+                        $sqlSelectParticipant = "SELECT * FROM participant";
+                        $stmtSelectParticipant = $pdo->prepare($sqlSelectParticipant);
+                        $stmtSelectParticipant->execute();
+                        $participants = $stmtSelectParticipant->fetchAll(PDO::FETCH_ASSOC);
 
                         // Afficher les données dans le tableau
-                        foreach ($activites as $activite) {
+                        foreach ($participants as $participant) {
                             echo "<tr>";
-                            echo "<td style='text-align: center;' >" . $activite['id_act'] . "</td>";
-                            echo "<td>" . $activite['nom_act'] . "</td>";
-                            echo "<td>" . $activite['description'] . "</td>";
+                            echo "<td style='text-align: center;' >" . $participant['num_participant'] . "</td>";
+                            echo "<td>" . $participant['nom_participant'] . "</td>";
+                            echo "<td>" . $participant['prenom_participant'] . "</td>";
+                            echo "<td>" . $participant['mail_participant'] . "</td>";
                             echo '<td class="bouton">
-                                <a href="form/modif/modif_activite.php?id_act=' . $activite['id_act'] . '"><img src="img/bouton_modif.svg" alt="Modifier"></a>                            
+                                <a href="form/modif/modif_participant.php?num_participant=' . $participant['num_participant'] . '"><img src="img/bouton_modif.svg" alt="Modifier"></a>                            
                                 <form method="post" action="">
                                     <input type="hidden" name="action" value="suppr_activite">
-                                    <input type="hidden" name="id_act" value=" '. $activite["id_act"] . '">
+                                    <input type="hidden" name="num_participant" value=" '. $participant["num_participant"] . '">
                                     <a href="#" type="submit" onclick="submitForm(this)"><img src="img/bouton_suppr.svg" alt="Supprimer"></a>
                                 </form>
                                 </td>';
@@ -109,7 +111,7 @@ $prenom = $infoUser['prenom_participant'];
                     </tbody>
                     <tfoot>
                         <tr>
-                            <td colspan="4"><a href="form/ajout/ajout_activite.php"><img src="img/bouton_ajout.svg" alt="Ajouter"></a></td>
+                            <td colspan="5"><a href="form/ajout/ajout_participant.php"><img src="img/bouton_ajout.svg" alt="Ajouter"></a></td>
                         </tr>
                     </tfoot>
                 </table>
